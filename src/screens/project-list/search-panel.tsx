@@ -7,6 +7,7 @@ export interface User {
   email: string;
   title: string;
   organization: string;
+  token: string
 }
 
 interface SearchPanelProps {
@@ -29,7 +30,7 @@ export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
           onChange={(evt) =>
             setParam({
               ...param,
-              name: evt.target.value,
+              name: evt.target.value
             })
           }
         />
@@ -38,7 +39,7 @@ export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
           onChange={(evt) =>
             setParam({
               ...param,
-              personId: evt.target.value,
+              personId: evt.target.value
             })
           }
         >
