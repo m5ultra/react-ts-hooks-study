@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "antd";
 import { RegisterScreen } from "./register";
 import { LoginScreen } from "./login";
 
@@ -8,7 +9,7 @@ export const UnauthenticatedApp = () => {
   return (
     <>
       {isRegister ? <LoginScreen /> : <RegisterScreen />}
-      <button onClick={() => setIsRegister(!isRegister)}>切换到{isRegister ? "注册" : "登录"}</button>
+      <Button type={"default"} onClick={() => setIsRegister(!isRegister)}>切换到{isRegister ? "注册" : "登录"}</Button>
     </>
   );
 };
