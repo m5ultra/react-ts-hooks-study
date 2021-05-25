@@ -8,6 +8,7 @@ interface IConfig extends RequestInit {
   token?: string,
   data?: object
 }
+
 // 给一个参数加默认值就变为默认可选了
 export const http = (endpoint: string, { data, token, headers, ...customConfig }: IConfig = {}) => {
   const config = {
@@ -46,3 +47,32 @@ export const useHttp = () => {
   // 学习操作符号
   return (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token });
 };
+
+// TS Utility Types
+
+// 联合类型
+let myFavoriteNumber: string | number;
+myFavoriteNumber = 7;
+myFavoriteNumber = "seven";
+// TS2322: Type '{}' is not assignable to type 'string | number'.   Type '{}' is not assignable to type 'number'.
+// myFavoriteNumber = {}
+
+let jackFavoriteNumber: string | number;
+// 类型别名
+type FavoriteNumber = string | number
+
+let roseFavoriteNumber: FavoriteNumber = "6";
+
+// interface Person {
+//   name: string
+// }
+
+type Person = { name: string }
+
+const xiaoMing: Person = { name: "xiaoming" };
+
+// 类型别名在很多情况下可以和interface互换
+
+// 区别：联合类型 和 交叉类型无法 interface 无法替代type
+// interface 也无法实现 Utility Type
+
