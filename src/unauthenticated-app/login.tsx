@@ -18,14 +18,14 @@ export const LoginScreen = () => {
     login(value);
   };
   return (
-    <Form onFinish={handleSubmit}>
+    <Form onFinish={handleSubmit} labelAlign={'left'}>
       {
         user ? <div>当前登陆用户名：{user.name}</div> : null
       }
-      <Form.Item name={"username"} label={"用户名"} htmlFor={"username"} rules={[{ required: true, message: "请输入用户名" }]}>
+      <Form.Item name={"username"} htmlFor={"username"} rules={[{ required: true, message: "请输入用户名" }]}>
         <Input placeholder={"用户名"} type="text" id={"username"} />
       </Form.Item>
-      <Form.Item name={"password"} label={"密码"} htmlFor={"password"} rules={[{ required: true, message: "请输入密码" }]}>
+      <Form.Item name={"password"}  htmlFor={"password"} rules={[{ required: true, message: "请输入密码" }]}>
         <Input placeholder={"密码"} type="password" id={"password"} />
       </Form.Item>
       <Form.Item>
