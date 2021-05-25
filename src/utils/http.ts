@@ -8,8 +8,8 @@ interface IConfig extends RequestInit {
   token?: string,
   data?: object
 }
-
-export const http = (endpoint: string, { data, token, headers, ...customConfig }: IConfig) => {
+// 给一个参数加默认值就变为默认可选了
+export const http = (endpoint: string, { data, token, headers, ...customConfig }: IConfig = {}) => {
   const config = {
     method: "GET",
     headers: {
@@ -25,7 +25,7 @@ export const http = (endpoint: string, { data, token, headers, ...customConfig }
     config.body = JSON.stringify(data || {});
   }
   return window
-    .fetch(`${apiUrl}/endpoint`, config)
+    .fetch(`${apiUrl}/${endpoint}`, config)
     .then(async (response) => {
       if (response.status === 401) {
         await auth.logout();
@@ -44,5 +44,5 @@ export const http = (endpoint: string, { data, token, headers, ...customConfig }
 export const useHttp = () => {
   const { user } = useAuth();
   // 学习操作符号
-  return ([endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token });
+  return (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token });
 };
