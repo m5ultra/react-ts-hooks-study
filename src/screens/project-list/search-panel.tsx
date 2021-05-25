@@ -1,5 +1,7 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { Input, Form, Select, Button } from "antd";
+import { useHttp } from "../../utils/http";
+import { useAuth } from "../../context/auth-content";
 
 export interface User {
   id: string;
@@ -7,7 +9,7 @@ export interface User {
   email: string;
   title: string;
   organization: string;
-  token: string
+  token: string;
 }
 
 interface SearchPanelProps {
@@ -20,11 +22,15 @@ interface SearchPanelProps {
 }
 
 export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
+  const { logout } = useAuth();
   return (
-    <form>
-      <div>
-        {/*setParam(Object.assign({}, param, {name:evt.target.value}))*/}
-        <input
+    <Form layout={"inline"}>
+      {/*setParam(Object.assign({}, param, {name:evt.target.value}))*/}
+      <Form.Item>
+        <Button type={"primary"} onClick={logout}>登出</Button>
+      </Form.Item>
+      <Form.Item>
+        <Input
           type="text"
           value={param.name}
           onChange={(evt) =>
@@ -34,23 +40,25 @@ export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
             })
           }
         />
-        <select
+      </Form.Item>
+      <Form.Item>
+        <Select
           value={param.personId}
-          onChange={(evt) =>
+          onChange={(val) =>
             setParam({
               ...param,
-              personId: evt.target.value
+              personId: val
             })
           }
         >
-          <option value={""}>负责人</option>
+          <Select.Option value={""}>负责人</Select.Option>
           {users.map((user) => (
-            <option key={user.id} value={user.id}>
+            <Select.Option key={user.id} value={user.id}>
               {user.name}
-            </option>
+            </Select.Option>
           ))}
-        </select>
-      </div>
-    </form>
+        </Select>
+      </Form.Item>
+    </Form>
   );
 };

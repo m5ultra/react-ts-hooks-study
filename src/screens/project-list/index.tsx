@@ -3,7 +3,6 @@ import { SearchPanel } from "screens/project-list/search-panel";
 import { List } from "screens/project-list/list";
 import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "../../utils";
-import * as qs from "qs";
 import { useHttp } from "../../utils/http";
 
 // 使用 JS 的同学，大部分的错误都是在 runtime(运行时) 的时候发现的
