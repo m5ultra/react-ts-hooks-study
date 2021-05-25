@@ -1,6 +1,5 @@
 import React, { FormEvent } from "react";
-import { useAuth } from "../context/auth-content";
-import { cleanObject } from "utils";
+import { useAuth } from "../../context/auth-content";
 
 // interface Base {
 //   id: number

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
-import { AuthProviders } from "./screens/context";
+import { AuthProviders } from "./context";
 
 loadDevTools(() =>
   ReactDOM.render(
