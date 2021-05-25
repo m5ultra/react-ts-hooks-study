@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
+// 请在jira-dev-tool 引用 antd 样式文件
+// import 'antd/dist/antd.css';
+import "antd/dist/antd.less";
 import { AuthProviders } from "./context";
 
 loadDevTools(() =>
