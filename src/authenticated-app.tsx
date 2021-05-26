@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProjectListScreen } from './screens/project-list'
 import styled from '@emotion/styled'
-import { Button, Dropdown, Menu } from 'antd'
+import { Dropdown, Menu } from 'antd'
 import { useAuth } from './context/auth-content'
 import { Row } from './components/lib'
 import { ReactComponent as SoftwareLogo } from 'assets/software-logo.svg'
@@ -17,13 +17,11 @@ export const AuthenticatedApp = () => {
           <h2>用户</h2>
         </HeaderLeft>
         <HeaderRight>
-          {/*<Button type={'primary'} onClick={logout}>*/}
-          {/*  登出*/}
-          {/*</Button>*/}
           <Dropdown
             overlay={
               <Menu>
                 <Menu.Item key={'logout'}>
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a href="" onClick={logout}>
                     登出
                   </a>
@@ -31,6 +29,7 @@ export const AuthenticatedApp = () => {
               </Menu>
             }
           >
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="" onClick={(e) => e.preventDefault()}>
               Hi, {user?.name}
             </a>
