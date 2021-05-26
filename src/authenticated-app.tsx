@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { Button } from 'antd'
 import { useAuth } from './context/auth-content'
 import { Row } from './components/lib'
+import { ReactComponent as SoftwareLogo } from 'assets/software-logo.svg'
 
 export const AuthenticatedApp = () => {
   const { logout } = useAuth()
@@ -11,7 +12,7 @@ export const AuthenticatedApp = () => {
     <Container>
       <Header between={true}>
         <HeaderLeft gap={true}>
-          <h2>logo</h2>
+          <SoftwareLogo width={'18rem'} color={'rgb(38, 132, 255)'} />
           <h2>项目</h2>
           <h2>用户</h2>
         </HeaderLeft>
