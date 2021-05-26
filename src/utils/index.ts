@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value)
 
+export const isVoid = (value: unknown) => value === '' || value === undefined || value === null
 // 在一个函数里，改变传入的对象本身是不好的
 export const cleanObject = (object: { [key: string]: unknown }) => {
   // Object.assign({}, object)
   const result = { ...object }
   Object.keys(result).forEach((key) => {
     const value = result[key]
-    if (isFalsy(value)) {
+    if (isVoid(value)) {
       delete result[key]
     }
   })
@@ -76,3 +77,16 @@ export const useArray = <T>(initialArray: T[]) => {
     },
   }
 }
+
+// let a: object
+// a = {}
+//
+// a = () => ({})
+//
+// a = new RegExp('')
+//
+// let b: { [key: string]: unknown }
+//
+// b= {name: 'jack'}
+// // Type '() => {}' is not assignable to type '{ [key: string]: unknown; }'.   Index signature is missing in type '() => {}'.
+// b = () => ({})
