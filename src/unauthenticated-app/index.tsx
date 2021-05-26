@@ -1,35 +1,35 @@
-import React, { useState } from "react";
-import { Card, Divider, Button } from "antd";
-import { RegisterScreen } from "./register";
-import { LoginScreen } from "./login";
-import styled from "@emotion/styled";
-import logo from "assets/logo.svg";
-import left from "assets/left.svg";
-import right from "assets/right.svg";
+import React, { useState } from 'react'
+import { Card, Divider, Button } from 'antd'
+import { RegisterScreen } from './register'
+import { LoginScreen } from './login'
+import styled from '@emotion/styled'
+import logo from 'assets/logo.svg'
+import left from 'assets/left.svg'
+import right from 'assets/right.svg'
 
 export const UnauthenticatedApp = () => {
-  const [isRegister, setIsRegister] = useState(false);
+  const [isRegister, setIsRegister] = useState(false)
 
   return (
     <Container>
       <Header />
       <Background />
       <ShadowCard>
-        <Title>{isRegister ? "请登录" : "请注册"}</Title>
-        {isRegister ? <LoginScreen /> : <RegisterScreen />}
+        <Title>{!isRegister ? '请登录' : '请注册'}</Title>
+        {!isRegister ? <LoginScreen /> : <RegisterScreen />}
         <Divider />
-        <span style={{ cursor: "pointer" }} onClick={() => setIsRegister(!isRegister)}>
-          {isRegister ? "没有账户？注册新账户" : "已经有账户了？直接登录"}
+        <span style={{ cursor: 'pointer' }} onClick={() => setIsRegister(!isRegister)}>
+          {!isRegister ? '已经有账户了？直接登录' : '没有账户？注册新账户'}
         </span>
       </ShadowCard>
     </Container>
-  );
-};
+  )
+}
 
 const Title = styled.h2`
   margin-bottom: 2.4rem;
   color: rgb(94, 100, 132);
-`;
+`
 const Background = styled.div`
   position: absolute;
   width: 100%;
@@ -39,20 +39,20 @@ const Background = styled.div`
   background-position: left bottom, right bottom;
   background-size: calc(((100vh - 40rem) / 2) - 3.2rem), calc(((100vh - 40rem) / 2) - 3.2rem), cover;
   background-image: url(${left}), url(${right});
-`;
+`
 
 const Header = styled.div`
   background: url(${logo}) no-repeat center;
   padding: 5rem 0;
   background-size: 8rem;
   width: 100%;
-`;
+`
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 const ShadowCard = styled(Card)`
   width: 40rem;
@@ -62,8 +62,8 @@ const ShadowCard = styled(Card)`
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
   text-align: center;
-`;
+`
 
 export const LongButton = styled(Button)`
-  width: 100%
-`;
+  width: 100%;
+`
