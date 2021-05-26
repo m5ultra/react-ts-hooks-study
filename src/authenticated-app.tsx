@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProjectListScreen } from './screens/project-list'
 import styled from '@emotion/styled'
-import { Dropdown, Menu } from 'antd'
+import { Button, Dropdown, Menu } from 'antd'
 import { useAuth } from './context/auth-content'
 import { Row } from './components/lib'
 import { ReactComponent as SoftwareLogo } from 'assets/software-logo.svg'
@@ -22,17 +22,17 @@ export const AuthenticatedApp = () => {
               <Menu>
                 <Menu.Item key={'logout'}>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a href="" onClick={logout}>
+                  <Button type={'link'} onClick={logout}>
                     登出
-                  </a>
+                  </Button>
                 </Menu.Item>
               </Menu>
             }
           >
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a href="" onClick={(e) => e.preventDefault()}>
+            <Button type={'link'} onClick={(e) => e.preventDefault()}>
               Hi, {user?.name}
-            </a>
+            </Button>
           </Dropdown>
         </HeaderRight>
       </Header>

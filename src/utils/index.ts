@@ -19,6 +19,7 @@ export const cleanObject = (object: { [key: string]: unknown }) => {
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback()
+    // TODO 依赖项加上callback() 会造成无限循环 这里和useCallback 以及 useMemo有关
     // eslint-disable-next-line
   }, [])
 }
