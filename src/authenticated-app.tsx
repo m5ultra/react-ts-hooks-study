@@ -51,6 +51,7 @@ const Container = styled.div`
 `
 const Header = styled(Row)`
   grid-area: header;
+  padding: 3.2rem;
 `
 
 const HeaderLeft = styled(Row)``
