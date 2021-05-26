@@ -9,12 +9,11 @@ export const AuthenticatedApp = () => {
   const { logout } = useAuth()
   return (
     <Container>
-      <Header>
+      <Header between={true}>
         <HeaderLeft gap={true}>
           <h2>logo</h2>
           <h2>项目</h2>
           <h2>用户</h2>
-          <h2>anther</h2>
         </HeaderLeft>
         <Button type={'primary'} onClick={logout}>
           登出
@@ -49,12 +48,8 @@ const Container = styled.div`
     'footer footer footer';
   height: 100vh;
 `
-const Header = styled.header`
+const Header = styled(Row)`
   grid-area: header;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 `
 
 const HeaderLeft = styled(Row)``
