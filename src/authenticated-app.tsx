@@ -44,7 +44,7 @@ const Container = styled.div`
   grid-template-rows: 6rem 1fr 6rem;
   grid-template-areas:
     'header header header'
-    'nav main aside'
+    'main main main'
     'footer footer footer';
   height: 100vh;
 `
