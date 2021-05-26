@@ -38,5 +38,5 @@ export const ProjectListScreen = () => {
 }
 
 const Container = styled.div`
-  padding: 0 3.2rem;
+  padding: 3.2rem;
 `

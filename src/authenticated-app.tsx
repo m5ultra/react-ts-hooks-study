@@ -68,6 +68,7 @@ const Container = styled.div`
 const Header = styled(Row)`
   grid-area: header;
   padding: 3.2rem;
+  box-shadow: 0 0 5px 0 rgb(0, 0, 0, 0.1);
 `
 
 const HeaderLeft = styled(Row)``
