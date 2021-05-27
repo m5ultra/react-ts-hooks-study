@@ -15,9 +15,9 @@ export const LoginScreen = ({ onError }: { onError: (error: Error) => void }) =>
   //     .value;
   //   login({ username, password });
   // };
-  const handleSubmit = (value: { username: string; password: string }) => {
+  const handleSubmit = async (value: { username: string; password: string }) => {
     try {
-      login(value)
+      await login(value)
     } catch (e) {
       onError(e)
     }
