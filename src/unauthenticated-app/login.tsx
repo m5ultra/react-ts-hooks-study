@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { useAuth } from '../context/auth-content'
 import { Form, Input } from 'antd'
 import { LongButton } from './index'
 import { useAsync } from '../utils/use-async'
 
-export const LoginScreen = ({ onError }: { onError: (error: Error) => void }) => {
+export const LoginScreen = ({ onError }: { onError: (error: Error | null) => void }) => {
   const { user, login } = useAuth()
-  const { run, isLoading } = useAsync()
-  const [name, setName] = useState('')
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true })
   const handleSubmit = async (value: { username: string; password: string }) => {
     try {
       await run(login(value))
@@ -16,7 +15,7 @@ export const LoginScreen = ({ onError }: { onError: (error: Error) => void }) =>
     }
   }
   const handleInputChange = (event: any) => {
-    setName(event.target.value)
+    onError(null)
   }
   return (
     <Form onFinish={handleSubmit} labelAlign={'left'}>

@@ -11,8 +11,11 @@ const defaultState: IState<null> = {
   data: null,
   error: null,
 }
-
-export const useAsync = <D>(initialState?: IState<D>) => {
+const defaultConf = {
+  throwOnError: false,
+}
+export const useAsync = <D>(initialState?: IState<D>, initialConf?: typeof defaultConf) => {
+  const conf = { ...defaultConf, ...initialConf }
   const [state, setState] = useState<IState<D>>({ ...defaultState, ...initialState })
   const setData = (data: D) =>
     setState({
@@ -45,7 +48,8 @@ export const useAsync = <D>(initialState?: IState<D>) => {
       })
       .catch((error) => {
         setError(error)
-        return Promise.reject(error)
+        if (conf.throwOnError) return Promise.reject(error)
+        return error
       })
   }
   return {

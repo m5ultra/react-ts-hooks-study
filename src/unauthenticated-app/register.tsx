@@ -2,12 +2,13 @@ import React, { FormEvent } from 'react'
 import { Button, Form, Input } from 'antd'
 import { useAuth } from '../context/auth-content'
 import { LongButton } from './index'
+import { useAsync } from '../utils/use-async'
 
 const apiUrl = process.env.REACT_APP_API_URL
 
 export const RegisterScreen = ({ onError }: { onError: (err: Error) => void }) => {
   const { user, register } = useAuth()
-
+  const { run, isLoading } = useAsync()
   // HTMLFormElement extends Element
   const handleSubmit = ({ c_password, ...values }: { username: string; password: string; c_password: string }) => {
     if (c_password !== values.password) {
@@ -32,7 +33,7 @@ export const RegisterScreen = ({ onError }: { onError: (err: Error) => void }) =
         <Input placeholder={'密码'} type="password" id={'c_password'} />
       </Form.Item>
       <Form.Item>
-        <LongButton type={'primary'} htmlType={'submit'}>
+        <LongButton loading={isLoading} type={'primary'} htmlType={'submit'}>
           注册
         </LongButton>
       </Form.Item>
