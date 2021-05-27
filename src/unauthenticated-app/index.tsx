@@ -19,7 +19,13 @@ export const UnauthenticatedApp = () => {
         {error ? <Typography.Text type={'danger'}>{error.message}</Typography.Text> : null}
         {!isRegister ? <LoginScreen onError={setError} /> : <RegisterScreen onError={setError} />}
         <Divider />
-        <span style={{ cursor: 'pointer' }} onClick={() => setIsRegister(!isRegister)}>
+        <span
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            setError(null)
+            return setIsRegister(!isRegister)
+          }}
+        >
           {!isRegister ? '已经有账户了？直接登录' : '没有账户？注册新账户'}
         </span>
       </ShadowCard>

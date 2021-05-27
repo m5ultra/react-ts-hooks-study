@@ -12,6 +12,7 @@ export const RegisterScreen = ({ onError }: { onError: (err: Error) => void }) =
   const handleSubmit = ({ c_password, ...values }: { username: string; password: string; c_password: string }) => {
     if (c_password !== values.password) {
       onError(new Error('请确认两次输入的密码是否相同'))
+      return
     }
     register(values).catch((e) => {
       onError(e)
